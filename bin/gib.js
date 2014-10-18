@@ -7,7 +7,7 @@ var gutil = require('gulp-util');
 var prettyTime = require('pretty-hrtime');
 
 // Config:
-var config = require(process.cwd() + '/build.config.js');
+var config = require(process.cwd() + '/gibberish.js');
 require('../lib/gulpfile.js')(config);
 
 // Get some gulp:
