@@ -19,6 +19,9 @@ var config = {
       ],
     }
   },
+  assets: {
+    'assets/': 'src/assets/**/*'
+  },
   angular: {
     'app-templates.js': {
       module: 'templates-app',
@@ -35,7 +38,10 @@ var config = {
     'index.html': 'src/index.html'
   },
   less: {
-    'app.css': 'src/less/main.less'
+    'app.css': {
+      watch: 'src/**/*.less',
+      src: 'src/less/main.less'
+    }
   }
 }
 
