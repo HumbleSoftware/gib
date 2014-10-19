@@ -8,10 +8,10 @@ var prettyTime = require('pretty-hrtime');
 
 // Config:
 var config = require(process.cwd() + '/gibberish.js');
-require('../lib/gulpfile.js')(config);
 
 // Get some gulp:
 var gib = require('../');
+gib.gulpfile(config);
 var gulpInst = gib.gulp;
 
 // Start some gulp:

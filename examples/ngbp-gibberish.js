@@ -11,6 +11,7 @@ var config = {
     ],
     'app.js': {
       hint: true,
+      angular: true,
       sourcemaps: true,
       src: [
         'src/**/*.js',

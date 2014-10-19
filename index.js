@@ -3,5 +3,6 @@
 var gulp = require('gulp');
 
 module.exports = {
-  gulp: gulp
+  gulp: gulp,
+  gulpfile: require('./lib/gulpfile.js')
 };
