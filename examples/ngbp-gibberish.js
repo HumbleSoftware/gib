@@ -46,5 +46,4 @@ var config = {
   }
 }
 
-module.exports = require('./build.config.js');
 module.exports = config;
