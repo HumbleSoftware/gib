@@ -23,7 +23,7 @@ var config = {
   assets: {
     'assets/': 'src/assets/**/*'
   },
-  angular: {
+  'ng-templates': {
     'app-templates.js': {
       module: 'templates-app',
       standalone: true,
@@ -44,6 +44,6 @@ var config = {
       src: 'src/less/main.less'
     }
   }
-}
+};
 
 module.exports = config;
