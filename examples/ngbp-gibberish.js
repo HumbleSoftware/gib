@@ -35,7 +35,7 @@ var config = {
       src: [ 'src/common/**/*.tpl.html' ]
     }
   },
-  html: {
+  index: {
     'index.html': 'src/index.html'
   },
   less: {
