@@ -116,8 +116,8 @@ this:
 
 * `git clone https://github.com/ngbp/ngbp.git` clone ngbp
 * `npm install --save-dev gib gulp` install gulp and gib
-* copy the [ngbp config](https://github.com/HumbleSoftware/gib/blob/master/examples/ngbp-gulpfile.js) into the repository
+* copy the [ngbp config](https://github.com/HumbleSoftware/gib/blob/master/examples/ngbp-gulpfile.js) into the repository as `gulpfile.js`
 * `gulp` start the development watcher
-* navigate to http://localhost:8080/bin/#/home
+* navigate to http://localhost:8080/build/#/home
 
 
