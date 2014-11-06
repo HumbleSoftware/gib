@@ -1,3 +1,5 @@
+var gib = require('gib');
+var gulp = require('gulp');
 var pkg = require('./package');
 var config = {
   build: 'build',
@@ -13,7 +15,6 @@ var config = {
     'app.js': {
       hint: true,
       angular: true,
-      sourcemaps: true,
       src: [
         'src/**/*.js',
         '!src/**/*.spec.js',
@@ -52,4 +53,5 @@ var config = {
   }
 };
 
-module.exports = config;
+// Populate gulp file:
+gib.gulpfile(config, gulp);
