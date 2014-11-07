@@ -55,7 +55,7 @@ var config = {
   },
   // Development index populated with js and css targets:
   index: {
-    'index.html': ./markup/index.html'
+    'index.html': './markup/index.html'
   }
 };
 
