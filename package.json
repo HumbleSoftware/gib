@@ -11,7 +11,7 @@
   },
   "author": "Carl Sutherland <carl@humblesoftware.com>",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "archy": "^1.0.0",
     "chalk": "^0.5.1",
     "del": "^0.1.3",
