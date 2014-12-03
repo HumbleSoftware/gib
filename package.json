@@ -57,6 +57,7 @@
     "mkdirp": "^0.5.0",
     "less-imports": "^1.1.0",
     "vinyl-buffer": "^1.0.0",
-    "node-notifier": "^4.0.2"
+    "node-notifier": "^4.0.2",
+    "exorcist": "^0.1.6"
   }
 }
