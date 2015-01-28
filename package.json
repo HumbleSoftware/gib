@@ -1,6 +1,6 @@
 {
   "name": "gib",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Angular.js build tool powered by gulp.",
   "main": "index.js",
   "scripts": {
