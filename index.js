@@ -2,8 +2,11 @@
 
 //var gulp = require('gulp');
 
-var pkgUp = require('pkg-up');
-var camelCase = require('camelcase');
+var camelCase    = require('camelcase');
+var EventEmitter = require('events');
+var gutil        = require('gulp-util');
+var pkgUp        = require('pkg-up');
+
 
 module.exports = gib;
 
@@ -100,28 +103,35 @@ function autoload () {
 
 function Registry () {
 
-  var bus = {
+  var bus = new EventEmitter();
+  var registry = {};
 
-    /**
-     * Trigger a browser refresh.
-     */
-    refresh: function () {
-      return registry.server.refresh();
-    },
+  /**
+   * Trigger a browser refresh.
+   */
+  bus.refresh = function () {
+    return registry.server.refresh();
+  };
 
-    /**
-     * Trigger a browser refresh from stream changes.
-     */
-    refreshStream: function () {
-      if (registry.server) {
-        return registry.server.refreshStream();
-      }
+  /**
+   * Trigger a browser refresh from stream changes.
+   */
+  bus.refreshStream = function () {
+    if (registry.server) {
+      return registry.server.refreshStream();
     }
   };
 
-  var registry = {
-
+  /**
+   * Handle an error.
+   */
+  bus.error = function (error) {
+    gutil.log(error.message);
+    bus.emit('notify-error', error.message, 'Error');
+    this.emit('end');
   };
+
+
 
   return {
 
