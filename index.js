@@ -131,6 +131,13 @@ function Registry () {
     this.emit('end');
   };
 
+  /**
+   * Handle a log.
+   */
+  bus.log = function (message) {
+    gutil.log(message);
+  };
+
 
 
   return {
