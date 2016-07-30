@@ -44,7 +44,7 @@ function gib (gulp, options) {
       // Add recipe watch task:
       if (recipe.watch) {
         console.log('Adding task ' + watchName + '...');
-        gulp.task(watchName, [taskName], registry.refresh)
+        gulp.task(watchName, [taskName]);
         tasks.push(taskName);
         watches[watchName] = recipeOptions.src;
       }
@@ -119,9 +119,10 @@ function Registry () {
   /**
    * Trigger a browser refresh from stream changes.
    */
-  bus.refreshStream = function () {
+  bus.refreshStream = function (match) {
     if (registry.server) {
-      return registry.server.refreshStream();
+      console.log('refresh stream...');
+      return registry.server.refreshStream(match);
     }
   };
 
