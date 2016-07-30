@@ -28,10 +28,11 @@ function gib (gulp, options) {
   // Recipe tasks:
   Object.keys(options).sort().forEach(function (key) {
 
-    var recipe        = recipes[key]
     var recipeOptions = options[key];
+    var recipeKey     = recipeOptions.name || key;
+    var recipe        = recipes[recipeKey];
     var taskName      = key;
-    var taskKey       = taskName + 'Task';
+    var taskKey       = recipeKey + 'Task';
     var watchName     = taskName + '-watch';
 
     recipeOptions['gibTaskName'] = taskName;
@@ -57,7 +58,6 @@ function gib (gulp, options) {
     console.log('Adding task watch...');
     gulp.task('watch', function () {
       Object.keys(watches).forEach(function (watchName) {
-        console.log('watching... ' + watchName);
         gulp.watch(watches[watchName], [watchName]);
       });
     })
@@ -121,7 +121,6 @@ function Registry () {
    */
   bus.refreshStream = function (match) {
     if (registry.server) {
-      console.log('refresh stream...');
       return registry.server.refreshStream(match);
     }
   };
