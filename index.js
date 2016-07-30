@@ -6,6 +6,7 @@ var camelCase    = require('camelcase');
 var EventEmitter = require('events');
 var gutil        = require('gulp-util');
 var pkgUp        = require('pkg-up');
+var colors       = require('colors');
 
 
 module.exports = gib;
@@ -32,6 +33,8 @@ function gib (gulp, options) {
     var taskName      = key;
     var taskKey       = taskName + 'Task';
     var watchName     = taskName + '-watch';
+
+    recipeOptions['gibTaskName'] = taskName;
 
     if (recipe[taskKey]) {
 
@@ -125,9 +128,15 @@ function Registry () {
   /**
    * Handle an error.
    */
-  bus.error = function (error) {
-    gutil.log(error.message);
-    bus.emit('notify-error', error.message, 'Error');
+  bus.error = function (title, message) {
+    if (typeof title === 'object') {
+      var error = title;
+      title = 'Error';
+      message = error.message;
+    }
+
+    gutil.log('Error'.red + (title === 'Error' ? ' ' : ' [' + title.cyan + '] ') + message);
+    bus.emit('notify-error', message, title);
     this.emit('end');
   };
 
