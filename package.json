@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "camelcase": "^3.0.0",
+    "colors": "^1.1.2",
     "gulp-util": "^3.0.7",
     "pkg-up": "^1.0.0"
   }
