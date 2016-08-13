@@ -5,6 +5,7 @@
 var camelCase    = require('camelcase');
 var EventEmitter = require('events');
 var gutil        = require('gulp-util');
+var pkgResolve   = require('resolve-pkg');
 var pkgUp        = require('pkg-up');
 var colors       = require('colors');
 
@@ -97,7 +98,7 @@ function autoload () {
     })
     // Load recipes:
     .forEach(function (recipeName) {
-      recipes.register(recipeName, require(recipeName));
+      recipes.register(recipeName, require(pkgResolve(recipeName)));
     });
 
   return recipes;
