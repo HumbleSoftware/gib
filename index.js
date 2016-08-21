@@ -38,6 +38,10 @@ function gib (gulp, options) {
 
     recipeOptions['gibTaskName'] = taskName;
 
+    if (!recipe) {
+      return gutil.log('[' + 'gib-warning'.yellow + '] recipe gib-recipe-' + recipeKey + ' not found in package.json');
+    }
+
     if (recipe[taskKey]) {
 
       gulp.task(taskName, recipe[taskKey](recipeOptions));
