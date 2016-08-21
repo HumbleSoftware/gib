@@ -174,10 +174,13 @@ function Registry () {
       // Fancy name:
       // gib-recipe-fancy-pants -> fancyPants
       name = camelCase.apply(camelCase, name.split('-').slice(2));
-      registry[name] = recipe;
+      if (typeof recipe.factory === 'function') {
+        recipe = recipe.factory(bus);
+      }
       if (typeof recipe.register === 'function') {
         recipe.register(bus);
       }
+      registry[name] = recipe;
     }
   };
 }
