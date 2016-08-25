@@ -19,7 +19,7 @@ gib.autoload = autoload;
 function gib (gulp, options) {
 
   var options  = config(options);
-  var registry = autoload();
+  var registry = autoload(gulp);
   var recipes  = registry.all();
   var server   = recipes['server'];
   var tasks    = [];
@@ -84,11 +84,12 @@ function config (options) {
 }
 
 
-function autoload () {
+function autoload (gulp) {
 
+  var bus = new Bus();
   var config = require(pkgUp.sync());
   var searchKeys = ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies']
-  var recipes = new Registry();
+  var recipes = new Registry(gulp, bus);
 
   searchKeys
     // Get packages names:
@@ -109,7 +110,7 @@ function autoload () {
 }
 
 
-function Registry () {
+function Registry (gulp, bus) {
 
   var bus = new EventEmitter();
   var registry = {};
@@ -175,7 +176,7 @@ function Registry () {
       // gib-recipe-fancy-pants -> fancyPants
       name = camelCase.apply(camelCase, name.split('-').slice(2));
       if (typeof recipe.factory === 'function') {
-        recipe = recipe.factory(bus);
+        recipe = recipe.factory(gulp, bus);
       }
       if (typeof recipe.register === 'function') {
         recipe.register(bus);
