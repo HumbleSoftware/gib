@@ -86,10 +86,9 @@ function config (options) {
 
 function autoload (gulp) {
 
-  var bus = new Bus();
   var config = require(pkgUp.sync());
   var searchKeys = ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies']
-  var recipes = new Registry(gulp, bus);
+  var recipes = new Registry(gulp);
 
   searchKeys
     // Get packages names:
@@ -110,7 +109,7 @@ function autoload (gulp) {
 }
 
 
-function Registry (gulp, bus) {
+function Registry (gulp) {
 
   var bus = new EventEmitter();
   var registry = {};
