@@ -48,11 +48,11 @@ function gib (gulp, options) {
       tasks.push(taskName);
 
       // Add recipe watch task:
-      if (recipe.watch) {
+      if (recipe.watch && recipeOptions.watch !== false) {
         console.log('Adding task ' + watchName + '...');
         gulp.task(watchName, [taskName]);
         tasks.push(taskName);
-        watches[watchName] = recipeOptions.src;
+        watches[watchName] = recipeOptions.watch || recipeOptions.src;
       }
     }
   });
