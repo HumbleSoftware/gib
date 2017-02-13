@@ -8,6 +8,7 @@ var gutil        = require('gulp-util');
 var pkgResolve   = require('resolve-pkg');
 var pkgUp        = require('pkg-up');
 var colors       = require('colors');
+var _            = require('underscore');
 
 
 module.exports = gib;
@@ -59,7 +60,7 @@ function gib (gulp, options) {
 
 
   // Watch task:
-  if (Object.keys(watches).length) {
+  if (Object.keys(watches).length && process.env.NODE_ENV !== 'production') {
     console.log('Adding task watch...');
     gulp.task('watch', function () {
       Object.keys(watches).forEach(function (watchName) {
@@ -72,6 +73,7 @@ function gib (gulp, options) {
 
   // Default task:
   gulp.task('default', tasks);
+  gulp.task('build', _.without(tasks, 'server'));
 
 
   return recipes;
